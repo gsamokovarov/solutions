@@ -1,0 +1,7 @@
+<h2>Hi <%= @user.email %> </h2>
+
+<% if notice = flash[:notice] %>
+  <p class="notice" style="background_color: green; color: white;"><%= notice %></p>
+<% end %>
+
+<p>You have no problems, or do you?!</p>
