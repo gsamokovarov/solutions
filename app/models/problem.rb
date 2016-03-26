@@ -4,7 +4,13 @@ class Problem < ApplicationRecord
 
   has_many :solutions
 
+  delegate :name, :description, to: :task
+
   def solved?
     solutions.last&.correct?
+  end
+
+  def current_solution
+    solutions.last
   end
 end
