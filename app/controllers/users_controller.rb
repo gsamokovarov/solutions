@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      login(@user)
       UserMailer.welcome_mail(@user).deliver_later
       redirect_to @user, notice: "You officially have problems, now"
     else
