@@ -4,3 +4,18 @@ test:
   user: example
   task: test
   ends_at: 2016-03-22 21:22:15
+
+problem_1:
+  user: example_with_problems
+  task: test
+  ends_at: <%= 2.days.ago %>
+
+problem_2:
+  user: example_with_problems
+  task: test
+  ends_at: <%= 2.days.from_now %>
+
+problem_3:
+  user: example_with_problems
+  task: test
+  ends_at: <%= 2.days.from_now %>
