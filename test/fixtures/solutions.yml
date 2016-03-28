@@ -1,15 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  problem: one
-  content: MyText
-  test_output: MyText
-  test_status: 1
-  checked_at: 2016-03-22 21:28:04
-
-two:
-  problem: two
-  content: MyText
-  test_output: MyText
-  test_status: 1
-  checked_at: 2016-03-22 21:28:04
+test:
+  problem: test
+  content: puts foo
+  test_output: nil
+  test_status: nil
+  checked_at: nil

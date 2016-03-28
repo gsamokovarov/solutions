@@ -4,4 +4,4 @@ test:
   name: test
   description: test
   test: assert false
-  test_command: true
+  test_command: 'true'
