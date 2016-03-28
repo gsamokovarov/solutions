@@ -11,6 +11,6 @@ class Solution < ApplicationRecord
   end
 
   def correct?
-    test_status.zero?
+    test_status&.zero?
   end
 end
