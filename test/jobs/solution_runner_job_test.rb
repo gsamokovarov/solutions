@@ -45,9 +45,7 @@ class SolutionRunnerJobTest < ActiveJob::TestCase
 
     Kernel.send(:define_method, '`') do |command|
       raise if command != 'true'
-      $? = Object.new.tap do |obj|
-        obj.define_singleton_method(:exit_status) { 0 }
-      end
+      MockLastStatus.set(0)
       'foo'
     end
 
