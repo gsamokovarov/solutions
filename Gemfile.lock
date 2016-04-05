@@ -1,8 +1,3 @@
-PATH
-  remote: ../../mock_last_status
-  specs:
-    mock_last_status (0.1.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -81,6 +76,7 @@ GEM
     mime-types (2.99.1)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
+    mock_last_status (0.1.0)
     multi_json (1.11.2)
     nio4r (1.2.1)
     nokogiri (1.6.7.2)
@@ -168,7 +164,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   listen (~> 3.0.5)
-  mock_last_status!
+  mock_last_status
   puma
   rails (>= 5.0.0.beta3, < 5.1)
   sass-rails (~> 5.0)

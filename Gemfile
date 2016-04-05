@@ -40,7 +40,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'mock_last_status', path: '../../mock_last_status'
+  gem 'mock_last_status'
 end
 
 group :development do
