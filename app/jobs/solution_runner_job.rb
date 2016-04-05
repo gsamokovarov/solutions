@@ -5,7 +5,7 @@ class SolutionRunnerJob < ApplicationJob
       File.write("#{dir}/solution.rb", solution.content)
 
       Dir.chdir(dir) do
-        output = `#{solution.task.test_command}`
+        output = `#{solution.task.test_command} 2>&1`
         status = $?.exitstatus
 
         solution.update!(test_output: output, test_status: status)

@@ -1,0 +1,7 @@
+<%= @solution.errors.full_messages if @solution.errors.present? %>
+
+<%= form_for([@solution.problem, @solution]) do |f| %>
+  <%= f.text_area :content %>
+  <br>
+  <%= f.submit %>
+<% end %>

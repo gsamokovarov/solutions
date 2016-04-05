@@ -7,7 +7,6 @@ class Solution < ApplicationRecord
   with_options allow_nil: true do
     validates :checked_at, presence: true
     validates :test_status, presence: true
-    validates :test_output, presence: true
   end
 
   def correct?

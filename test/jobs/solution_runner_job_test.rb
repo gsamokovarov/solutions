@@ -44,7 +44,7 @@ class SolutionRunnerJobTest < ActiveJob::TestCase
     RUBY
 
     Kernel.send(:define_method, '`') do |command|
-      raise if command != 'true'
+      raise if command != 'true 2>&1'
       MockLastStatus.set(0)
       'foo'
     end
