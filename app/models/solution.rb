@@ -12,4 +12,18 @@ class Solution < ApplicationRecord
   def correct?
     test_status&.zero?
   end
+
+  def check
+    Dir.mktmpdir do |dir|
+      File.write("#{dir}/solution_test.rb", task.test)
+      File.write("#{dir}/solution.rb", content)
+
+      Dir.chdir(dir) do
+        output = `#{task.test_command} 2>&1`
+        status = $?.exitstatus
+
+        update!(test_output: output, test_status: status, checked_at: Time.current)
+      end
+    end
+  end
 end
