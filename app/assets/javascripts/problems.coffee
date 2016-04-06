@@ -13,9 +13,9 @@ jQuery ($) ->
       else
         callback()
 
-  pollSolution = ->
+  pollSolution = (firstTime = true) ->
     setTimeout ->
-      getSolution -> pollSolution()
-    , 1000
+      getSolution -> pollSolution(false)
+    , firstTime ? 0 : 200
 
   pollSolution()
