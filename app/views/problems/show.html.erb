@@ -1,0 +1,8 @@
+<h3><%= @problem.name %></h3>
+<p><%= @problem.description %></p>
+
+<hr>
+
+<%= render partial: @problem.solutions, spacer_template: 'solution_separator' %>
+
+<%= link_to "Submit Solution", new_problem_solution_path(@problem) %>
