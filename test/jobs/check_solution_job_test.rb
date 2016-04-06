@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class SolutionRunnerJobTest < ActiveJob::TestCase
+class CheckSolutionJobTest < ActiveJob::TestCase
   setup do
     @original_mktmpdir = Dir.method(:mktmpdir)
     @original_chdir = Dir.method(:chdir)
@@ -50,7 +50,7 @@ class SolutionRunnerJobTest < ActiveJob::TestCase
     end
 
     solution = solutions(:test)
-    SolutionRunnerJob.perform_now(solution)
+    CheckSolutionJob.perform_now(solution)
 
     solution.reload
 

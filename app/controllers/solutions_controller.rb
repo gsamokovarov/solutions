@@ -16,7 +16,7 @@ class SolutionsController < ApplicationController
   def create
     @solution = problem.solutions.new(solution_params)
     if @solution.save
-      SolutionRunnerJob.perform_later(@solution)
+      CheckSolutionJob.perform_later(@solution)
       redirect_to root_path
     else
       render :new

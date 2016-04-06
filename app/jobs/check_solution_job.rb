@@ -1,4 +1,4 @@
-class SolutionRunnerJob < ApplicationJob
+class CheckSolutionJob < ApplicationJob
   def perform(solution)
     solution.check
   end
