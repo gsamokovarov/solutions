@@ -1,2 +1,6 @@
-<pre><%= solution.content %></pre>
-<pre><%= solution.test_output %></pre>
+<div class="solution" data-solution-id="<%= solution.id %>"
+                      data-problem-id="<%= solution.problem.id %>">
+
+  <pre class="content"><%= solution.content %></pre>
+  <pre class="test_output"><%= solution.test_output %></pre>
+</div>
