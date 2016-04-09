@@ -14,8 +14,12 @@ jQuery ($) ->
         callback()
 
   pollSolution = (firstTime = true) ->
-    setTimeout ->
-      getSolution -> pollSolution(false)
-    , firstTime ? 0 : 200
+    unless pollSolution.tries++ > pollSolution.maxTries
+      setTimeout ->
+        getSolution -> pollSolution(false)
+      , firstTime ? 0 : 200
+
+  pollSolution.tries = 0
+  pollSolution.maxTries = 100
 
   pollSolution() if solutionId
