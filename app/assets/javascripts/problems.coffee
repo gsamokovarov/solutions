@@ -18,4 +18,4 @@ jQuery ($) ->
       getSolution -> pollSolution(false)
     , firstTime ? 0 : 200
 
-  pollSolution()
+  pollSolution() if solutionId
