@@ -1,13 +1,42 @@
 class UsersController < ApplicationController
+  
+  def index
+    redirect_to user_path(current_user_id) and return unless current_user_id == 0
+  end
+
   def new
     @user = User.new
   end
-
-  def show
-    @user = User.find(params[:id])
+  
+  def create
+    if (params.has_key?("login"))
+      check_user_credentials
+    else
+      create_new_user
+    end
   end
 
-  def create
+  def show
+    require_login and return if current_user_id == 0
+    @user = User.find(params[:id])
+  end
+  
+  def destroy
+    cookies.delete(:user_id) if current_user_id == params[:id].to_i
+    render :index   
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:email, :password)
+  end
+
+  def login_params
+    params.require(:login).permit(:email, :password)
+  end
+
+  def create_new_user
     @user = User.new(user_params)
     if @user.save
       login(@user)
@@ -18,9 +47,18 @@ class UsersController < ApplicationController
     end
   end
 
-  private
+  def check_user_credentials
+    @user = User.find_by(email: login_params["email"])    
+    redirect_to_user_path and return unless @user
+    
+    @user = @user.authenticate(login_params["password"])
+    redirect_to_user_path and return unless @user
 
-  def user_params
-    params.require(:user).permit(:email, :password)
+    login(@user)
+    render :show
+  end
+
+  def redirect_to_user_path
+    redirect_to users_path, notice: "User name or password is incorrect"
   end
 end

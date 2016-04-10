@@ -5,3 +5,4 @@
 <% end %>
 
 <p>You have no problems, or do you?!</p>
+<p><%= link_to "log out", user_path(cookies.permanent.signed[:user_id]), method: :delete  %></p>
