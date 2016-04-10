@@ -30,4 +30,12 @@ class UserTest < ActiveSupport::TestCase
 
     assert user.current_problems.empty?
   end
+
+  test "validates user email uniqueness" do
+    user = users(:example)
+    user.save
+
+    user2 = User.new(email: user.email)
+    assert_not user2.save
+  end
 end

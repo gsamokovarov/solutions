@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 example:
-  email: to@example.org
+  email: to1@example.org
   password_digest: $2a$10$.V2Eh1x1kdjySZEKxIPXiuv58aCvtObv4rcic7CctKm3VSGXwUAqi
 
 example_with_problems:
-  email: to@example.org
+  email: to12@example.org
   password_digest: $2a$10$.V2Eh1x1kdjySZEKxIPXiuv58aCvtObv4rcic7CctKm3VSGXwUAqi
 
 example_without_problems:
-  email: to@example.org
+  email: to123@example.org
   password_digest: $2a$10$.V2Eh1x1kdjySZEKxIPXiuv58aCvtObv4rcic7CctKm3VSGXwUAqi
