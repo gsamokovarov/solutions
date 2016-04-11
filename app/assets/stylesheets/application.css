@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+.problem-solved {
+  background-color: green;
+}
+
+.problem-unsolved {
+  background-color: red;
+}
