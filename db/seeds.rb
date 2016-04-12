@@ -29,7 +29,27 @@ task = Task.find_or_create_by!(name: "Numbers are odd") do |task|
   RUBY
 end
 
+task2 = Task.find_or_create_by!(name: "Numbers are even") do |task|
+  task.description = 'Because the other numbers lough at them...'
+  task.test_command = 'ruby solution_test.rb'
+  task.test = <<~RUBY
+    require 'minitest/autorun'
+    require_relative 'solution'
+
+    class OddTest < Minitest::Test
+      def test_numbers_are_even_when_they_are_like_2
+        assert_equal true, even?(2)
+      end
+
+      def test_numbers_arent_even_when_they_are_like_3
+        assert_equal false, even?(3)
+      end
+    end
+  RUBY
+end
+
 problem = Problem.find_or_create_by!(user: user, task: task, ends_at: Date.yesterday)
+problem2 = Problem.find_or_create_by!(user: user, task: task2, ends_at: Date.tomorrow)
 
 Solution.find_or_create_by!(problem: problem) do |solution|
   solution.content = <<~RUBY
@@ -38,6 +58,14 @@ Solution.find_or_create_by!(problem: problem) do |solution|
     end
   RUBY
   solution.test_status = 0
+end
+
+Solution.find_or_create_by!(problem: problem2) do |solution|
+  solution.content = <<~RUBY
+    def even?(number)
+      false
+    end
+  RUBY
 end
 
 admin = User.find_or_create_by!(email: 'admin@example.org') do |admin|
