@@ -9,3 +9,4 @@ class User < ApplicationRecord
     problems.where('ends_at >= ?', Date.today)
   end
 end
+

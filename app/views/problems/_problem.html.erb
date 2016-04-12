@@ -1,5 +1,7 @@
-<h3><%= problem.name %></h3>
-<p><%= problem.description %></p>
+<div class="problem-<%= problem.solved? ? 'solved' : 'unsolved' %>">
+  <h3><%= problem.name %></h3>
+  <p><%= problem.description %></p>
+</div>
 
 <hr>
 
