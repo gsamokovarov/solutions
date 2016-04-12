@@ -7,7 +7,7 @@ class Problem < ApplicationRecord
   delegate :name, :description, to: :task
 
   def solved?
-    solutions.last&.correct?
+    current_solution&.correct?
   end
 
   def current_solution
