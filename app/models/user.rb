@@ -3,7 +3,7 @@ class User < ApplicationRecord
 
   has_many :problems
 
-  validates :email, presence: true
+  validates :email, presence: true, uniqueness: true
 
   def current_problems
     problems.where('ends_at >= ?', Date.today)
