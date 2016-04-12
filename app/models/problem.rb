@@ -13,4 +13,8 @@ class Problem < ApplicationRecord
   def current_solution
     solutions.last
   end
+
+  def solved_problems
+    solutions.where(test_output: '0')
+  end
 end
