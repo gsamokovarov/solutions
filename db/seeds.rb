@@ -29,11 +29,74 @@ task = Task.find_or_create_by!(name: "Numbers are odd") do |task|
   RUBY
 end
 
-problem = Problem.find_or_create_by!(user: user, task: task, ends_at: 100.years.from_now)
+task2 = Task.find_or_create_by!(name: "Numbers are even") do |task|
+  task.description = 'Because the other numbers lough at them...'
+  task.test_command = 'ruby solution_test.rb'
+  task.test = <<~RUBY
+    require 'minitest/autorun'
+    require_relative 'solution'
+
+    class OddTest < Minitest::Test
+      def test_numbers_are_even_when_they_are_like_2
+        assert_equal true, even?(2)
+      end
+
+      def test_numbers_arent_even_when_they_are_like_3
+        assert_equal false, even?(3)
+      end
+    end
+  RUBY
+end
+
+problem = Problem.find_or_create_by!(user: user, task: task, ends_at: Date.yesterday)
+problem2 = Problem.find_or_create_by!(user: user, task: task2, ends_at: Date.tomorrow)
 
 Solution.find_or_create_by!(problem: problem) do |solution|
   solution.content = <<~RUBY
     def odd?(number)
+      false
+    end
+  RUBY
+  solution.test_status = 0
+end
+
+Solution.find_or_create_by!(problem: problem2) do |solution|
+  solution.content = <<~RUBY
+    def even?(number)
+      false
+    end
+  RUBY
+end
+
+admin = User.find_or_create_by!(email: 'admin@example.org') do |admin|
+  admin.password = 'admin1234'
+  admin.is_admin = true
+end
+
+task1 = Task.find_or_create_by!(name: "Word is palindrome") do |task|
+  task.description = 'Words that are read the same backwards'
+  task.test_command = 'ruby solution_test.rb'
+  task.test = <<~RUBY
+    require 'minitest/autorun'
+    require_relative 'solution'
+
+    class PalindromeTest < Minitest::Test
+      def test_words_are_palindromes_when_they_are_like_racecar
+        assert_equal true, palindrome?("racecar")
+      end
+
+      def test_words_are_palindromes_when_they_are_like_race
+        assert_equal false, palindrome?("race")
+      end
+    end
+  RUBY
+end
+
+problem1 = Problem.find_or_create_by!(user: user, task: task1, ends_at: 100.years.from_now)
+
+Solution.find_or_create_by!(problem: problem1) do |solution|
+  solution.content = <<~RUBY
+    def palindrome?(word)
       false
     end
   RUBY

@@ -1,0 +1,9 @@
+<p> Current problems </p>
+<%= @problems_current.inspect %>
+
+<p> Past solved problems </p>
+<%= @past_solved_problems.inspect %>
+
+<% if current_user.is_admin %>
+	<%= link_to 'Create new task', new_task_path %>
+<% end %>
