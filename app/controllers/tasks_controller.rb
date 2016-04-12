@@ -7,11 +7,10 @@ class TasksController < ApplicationController
 
   def create
     @task = Task.new(task_params)
+
     if @task.save
-      flash[:status] = "OK"
-      redirect_to new_task_path, notice: "Task has been created"
+      render :show
     else
-      flash[:status] = "error" 
       redirect_to new_task_path, notice: "#{@task.errors.full_messages}"
     end
   end
@@ -19,6 +18,6 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:name,:description,:test_command,:test)
+    params.require(:task).permit(:name, :description, :test_command, :test)
   end
 end

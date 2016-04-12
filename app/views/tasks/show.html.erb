@@ -1,0 +1,9 @@
+<h2><%= @task.name %></h2>
+
+<p>
+  <b>Description:</b> <%= @task.description %><br/>
+  <b>Command:</b> <%= @task.test_command %><br/>
+  <b>Test:</b> <%= @task.test  %><br/>
+</p>
+
+<%= link_to("Create new task", new_task_path) %>

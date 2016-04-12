@@ -1,18 +1,13 @@
 <h1>Create new task</h1>
 
-<%
-   info_class = "notice"
-   info_class = "notice_error" unless flash[:status] == "OK"
-%>
-
 <% if notice = flash[:notice] %>
-<p class=<%= info_class %> margin="2px"><%= notice %></p>
+<p class=notice_error margin="2px"><%= notice %></p>
 <% end %>
 
 <%= form_for @task do |f| %>
-<%= f.text_field :name, placeholder: "Name" %><br/>
-<%= f.text_field :description, placeholder: "Description" %></br>
-<%= f.text_field :test_command, placeholder: "Command" %><br/>
-<%= f.text_area :test, placeholder: "Tests", rows: "10", cols: "50"  %><br/>
-<%= f.submit  %>
+  <%= f.text_field :name, placeholder: "Name" %><br/>
+  <%= f.text_field :description, placeholder: "Description" %></br>
+  <%= f.text_field :test_command, placeholder: "Command" %><br/>
+  <%= f.text_area :test, placeholder: "Test", rows: "10", cols: "50"  %><br/>
+  <%= f.submit  %>
 <% end  %>
