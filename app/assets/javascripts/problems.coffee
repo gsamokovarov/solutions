@@ -6,10 +6,19 @@ jQuery ($) ->
   problemId = $('.solution').data('problem-id')
   solutionId = $('.solution').data('solution-id')
 
+  changeSolution = (data) ->
+    if data.test_status is 0
+      $('.problem-unsolved').attr('class', 'problem-solved')
+      console.log("Dont mind me just changing stuff")
+    else
+      console.log("Changed to unsolved")
+      $('.problem-solved').attr('class', 'problem-unsolved')
+
   getSolution = (callback) ->
     $.get "/problems/#{problemId}/solutions/#{solutionId}.json", (data) ->
       if data?.checked_at
         $('.solution .test_output').html(data?.test_output)
+        changeSolution(data)
       else
         callback()
 
