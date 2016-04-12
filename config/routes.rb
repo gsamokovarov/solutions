@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'problems#index'
+  root to: 'dashboards#index'
 
   resources :users, only: %i(new show create)
   resources :problems, only: %i(index show) do
