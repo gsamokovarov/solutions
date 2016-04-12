@@ -33,7 +33,7 @@ class UserTest < ActiveSupport::TestCase
 
   test "validates user email uniqueness" do
     user = users(:example)
-    user.save
+    assert user.save
 
     user2 = User.new(email: user.email)
     assert_not user2.save
