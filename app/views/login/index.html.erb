@@ -1,0 +1,11 @@
+<h2>Please provide your login credentials</h2>
+
+<% if notice = flash[:notice] %>
+<p class="wrong_credentials" style="color: red"><%= notice %></p>
+<% end %> 
+    
+<%= form_for :login, url: login_index_path do |f| %>
+  <%= f.text_field :email, placeholder: :email %>
+  <%= f.password_field :password, placeholder: :password %>
+  <%= f.submit value: "Log in"  %>
+<% end %>

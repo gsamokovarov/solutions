@@ -13,12 +13,6 @@ class ApplicationController < ActionController::Base
   
   private
 
-  def current_user_id
-    user_id = cookies.permanent.signed[:user_id]
-    user_id ||= 0
-  end
-
-  
   def require_login
     redirect_to users_path if current_user.nil?
   end
