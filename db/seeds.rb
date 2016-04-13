@@ -45,8 +45,8 @@ prime_task = Task.find_or_create_by!(name: "Numbers are prime") do |task|
       end
     end
 
-    def test_numbers_arent_prime_like_16_100_-100_0_1
-      non_primes = [16, 100, -100, 0, 1, 10000000]
+    def test_numbers_arent_prime_like_16_100_negative_0_1
+      non_primes = [16, 100, -100, 0, 1, 10000000, -3, -5]
 
       non_primes.each do |number|
         assert_equal false, prime?(number)
