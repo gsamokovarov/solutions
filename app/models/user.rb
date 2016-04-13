@@ -8,4 +8,12 @@ class User < ApplicationRecord
   def current_problems
     problems.where('ends_at >= ?', Date.today)
   end
+
+  def unsolved_problems
+    problems - solved_problems
+  end
+
+  def solved_problems
+    problems.select(&:solved?)
+  end
 end
