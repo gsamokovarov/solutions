@@ -10,7 +10,7 @@ class User < ApplicationRecord
   end
 
   def unsolved_problems
-    current_problems.reject(&:solved?)
+    problems - solved_problems
   end
 
   def solved_problems

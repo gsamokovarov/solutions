@@ -1,8 +1,10 @@
-<h3><%= problem.name %></h3>
-<p><%= problem.description %></p>
+<div class='problem-<%= problem.id %>'>
+  <h3><%= problem.name %></h3>
+  <p><%= problem.description %></p>
 
-<hr>
+  <hr>
 
-<%= render problem.current_solution if problem.current_solution %>
+  <%= render problem.current_solution if problem.current_solution %>
 
-<%= link_to "Submit Solution", new_problem_solution_path(problem) %>
+  <%= link_to "Submit Solution", new_problem_solution_path(problem) %>
+</div>

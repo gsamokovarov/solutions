@@ -56,6 +56,7 @@ prime_task = Task.find_or_create_by!(name: "Numbers are prime") do |task|
 end
 
 problem = Problem.find_or_create_by!(user: user, task: task, ends_at: 100.years.from_now)
+prime_problem = Problem.find_or_create_by!(user: user, task: prime_task, ends_at: 100.years.from_now)
 
 Solution.find_or_create_by!(problem: problem) do |solution|
   solution.content = <<~RUBY

@@ -2,7 +2,7 @@ class DashboardsController < ApplicationController
   before_action :require_login
 
   def index
-    @current_problems = current_user.current_problems
-    @new_problems = current_user.new_problems
+    @solved_problems = current_user.solved_problems
+    @unsolved_problems = current_user.unsolved_problems
   end
 end
