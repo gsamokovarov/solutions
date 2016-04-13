@@ -30,7 +30,7 @@ task = Task.find_or_create_by!(name: "Numbers are odd") do |task|
 end
 
 prime_task = Task.find_or_create_by!(name: "Numbers are prime") do |task|
-  task.description = 'We need to find Optimus Prime!'
+  task.description = 'We need to find prime numbers!'
   task.test_command = 'ruby solution_test.rb'
   task.test = <<~RUBY
   require 'minitest/autorun'
