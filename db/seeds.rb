@@ -37,19 +37,20 @@ prime_task = Task.find_or_create_by!(name: "Numbers are prime") do |task|
   require_relative 'solution'
 
   class PrimeTest < Minitest::Test
-    def test_numbers_are_prime_when_they_are_like_3_and_2_and_17_and_97
-      assert_equal true, prime?(3)
-      assert_equal true, prime?(2)
-      assert_equal true, prime?(17)
-      assert_equal true, prime?(97)
+    def test_numbers_are_prime_like_4_2_17_97_113_1223
+      primes = [3, 2, 17, 97, 113, 1223]
+      
+      primes.each do |number|
+        assert_equel true, prime?(number)
+      end
     end
 
-    def test_numbers_arent_prime_when_they_are_like_16_100_-100_0_1
-      assert_equal false, prime?(16)
-      assert_equal false, prime?(100)
-      assert_equal false, prime?(-100)
-      assert_equal false, prime?(0)
-      assert_equal false, prime?(1)
+    def test_numbers_arent_prime_like_16_100_-100_0_1
+      non_primes = [16, 100, -100, 0, 1, 10000000]
+
+      non_primes.each do |number|
+        assert_equal false, prime?(number)
+      end
     end
   end
   RUBY
