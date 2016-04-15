@@ -1,10 +1,8 @@
 class UsersController < ApplicationController
+  before_action :require_login, only: :show
+
   def new
     @user = User.new
-  end
-
-  def show
-    @user = User.find(params[:id])
   end
 
   def create
@@ -12,10 +10,12 @@ class UsersController < ApplicationController
     if @user.save
       login(@user)
       UserMailer.welcome_mail(@user).deliver_later
-      redirect_to @user, notice: "You officially have problems, now"
-    else
-      render :new
+      render :show
     end
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   private

@@ -1,0 +1,2 @@
+<h2>Wlcome <%= @user.email %></h2>
+<p><%= link_to "log out", login_path(cookies.permanent.signed[:user_id]), method: :delete  %></p>
