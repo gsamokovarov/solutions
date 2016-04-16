@@ -35,7 +35,7 @@ gem 'bcrypt', '~> 3.1.7' # >= 3.1.7 < 3.2.0
 group :development do
   gem 'capistrano-rails'
   gem 'capistrano-rbenv'
-  gem 'capistrano-puma'
+  gem 'capistrano3-puma'
   gem 'capistrano-bundler'
 end
 
