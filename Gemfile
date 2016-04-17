@@ -31,6 +31,8 @@ gem 'jbuilder', '~> 2.0' # >= 2.0 < 3
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7' # >= 3.1.7 < 3.2.0
 
+gem 'basic_auth', path: './vendor/plugins/basic_auth'
+
 # Use Capistrano for deployment
 group :development do
   gem 'capistrano-rails'

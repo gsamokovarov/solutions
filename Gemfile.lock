@@ -1,3 +1,8 @@
+PATH
+  remote: ./vendor/plugins/basic_auth
+  specs:
+    basic_auth (0.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -180,6 +185,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  basic_auth!
   bcrypt (~> 3.1.7)
   byebug
   capistrano-bundler
